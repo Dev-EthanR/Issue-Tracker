@@ -14,10 +14,10 @@ const statusMap: Record<
   CLOSED: { label: "Closed", color: "green" },
 };
 
-const IssueStatusBadege = ({ status }: Props) => {
+const IssueStatusBadge = ({ status }: Props) => {
   return (
     <Badge color={statusMap[status].color}>{statusMap[status].label}</Badge>
   );
 };
 
-export default IssueStatusBadege;
+export default IssueStatusBadge;
