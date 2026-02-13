@@ -21,7 +21,6 @@ const IssueDetailPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions);
   const { id } = await params;
   const issue = await fetchUser(parseInt(id));
-  console.log(session);
 
   if (!issue) notFound();
 
