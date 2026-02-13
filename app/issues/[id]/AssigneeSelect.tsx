@@ -2,7 +2,6 @@
 import { Issue, User } from "@/generated/prisma/client";
 import { Select } from "@radix-ui/themes";
 import axios from "axios";
-import { error } from "console";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
