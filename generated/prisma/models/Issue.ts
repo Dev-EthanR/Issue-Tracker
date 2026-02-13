@@ -41,6 +41,7 @@ export type IssueMinAggregateOutputType = {
   status: $Enums.Status | null
   createdAt: Date | null
   updatedAt: Date | null
+  assignedToUserId: string | null
 }
 
 export type IssueMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type IssueMaxAggregateOutputType = {
   status: $Enums.Status | null
   createdAt: Date | null
   updatedAt: Date | null
+  assignedToUserId: string | null
 }
 
 export type IssueCountAggregateOutputType = {
@@ -59,6 +61,7 @@ export type IssueCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  assignedToUserId: number
   _all: number
 }
 
@@ -78,6 +81,7 @@ export type IssueMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  assignedToUserId?: true
 }
 
 export type IssueMaxAggregateInputType = {
@@ -87,6 +91,7 @@ export type IssueMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  assignedToUserId?: true
 }
 
 export type IssueCountAggregateInputType = {
@@ -96,6 +101,7 @@ export type IssueCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  assignedToUserId?: true
   _all?: true
 }
 
@@ -192,6 +198,7 @@ export type IssueGroupByOutputType = {
   status: $Enums.Status
   createdAt: Date
   updatedAt: Date
+  assignedToUserId: string | null
   _count: IssueCountAggregateOutputType | null
   _avg: IssueAvgAggregateOutputType | null
   _sum: IssueSumAggregateOutputType | null
@@ -224,6 +231,8 @@ export type IssueWhereInput = {
   status?: Prisma.EnumStatusFilter<"Issue"> | $Enums.Status
   createdAt?: Prisma.DateTimeFilter<"Issue"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Issue"> | Date | string
+  assignedToUserId?: Prisma.StringNullableFilter<"Issue"> | string | null
+  assignedToUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type IssueOrderByWithRelationInput = {
@@ -233,6 +242,8 @@ export type IssueOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  assignedToUserId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedToUser?: Prisma.UserOrderByWithRelationInput
 }
 
 export type IssueWhereUniqueInput = Prisma.AtLeast<{
@@ -245,6 +256,8 @@ export type IssueWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumStatusFilter<"Issue"> | $Enums.Status
   createdAt?: Prisma.DateTimeFilter<"Issue"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Issue"> | Date | string
+  assignedToUserId?: Prisma.StringNullableFilter<"Issue"> | string | null
+  assignedToUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id">
 
 export type IssueOrderByWithAggregationInput = {
@@ -254,6 +267,7 @@ export type IssueOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  assignedToUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.IssueCountOrderByAggregateInput
   _avg?: Prisma.IssueAvgOrderByAggregateInput
   _max?: Prisma.IssueMaxOrderByAggregateInput
@@ -271,6 +285,7 @@ export type IssueScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumStatusWithAggregatesFilter<"Issue"> | $Enums.Status
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Issue"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Issue"> | Date | string
+  assignedToUserId?: Prisma.StringNullableWithAggregatesFilter<"Issue"> | string | null
 }
 
 export type IssueCreateInput = {
@@ -279,6 +294,7 @@ export type IssueCreateInput = {
   status?: $Enums.Status
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignedToUser?: Prisma.UserCreateNestedOneWithoutAssignedIssuesInput
 }
 
 export type IssueUncheckedCreateInput = {
@@ -288,6 +304,7 @@ export type IssueUncheckedCreateInput = {
   status?: $Enums.Status
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignedToUserId?: string | null
 }
 
 export type IssueUpdateInput = {
@@ -296,6 +313,7 @@ export type IssueUpdateInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedToUser?: Prisma.UserUpdateOneWithoutAssignedIssuesNestedInput
 }
 
 export type IssueUncheckedUpdateInput = {
@@ -305,6 +323,7 @@ export type IssueUncheckedUpdateInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedToUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type IssueCreateManyInput = {
@@ -314,6 +333,7 @@ export type IssueCreateManyInput = {
   status?: $Enums.Status
   createdAt?: Date | string
   updatedAt?: Date | string
+  assignedToUserId?: string | null
 }
 
 export type IssueUpdateManyMutationInput = {
@@ -331,6 +351,7 @@ export type IssueUncheckedUpdateManyInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedToUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type IssueCountOrderByAggregateInput = {
@@ -340,6 +361,7 @@ export type IssueCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  assignedToUserId?: Prisma.SortOrder
 }
 
 export type IssueAvgOrderByAggregateInput = {
@@ -353,6 +375,7 @@ export type IssueMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  assignedToUserId?: Prisma.SortOrder
 }
 
 export type IssueMinOrderByAggregateInput = {
@@ -362,10 +385,21 @@ export type IssueMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  assignedToUserId?: Prisma.SortOrder
 }
 
 export type IssueSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+}
+
+export type IssueListRelationFilter = {
+  every?: Prisma.IssueWhereInput
+  some?: Prisma.IssueWhereInput
+  none?: Prisma.IssueWhereInput
+}
+
+export type IssueOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -388,6 +422,143 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type IssueCreateNestedManyWithoutAssignedToUserInput = {
+  create?: Prisma.XOR<Prisma.IssueCreateWithoutAssignedToUserInput, Prisma.IssueUncheckedCreateWithoutAssignedToUserInput> | Prisma.IssueCreateWithoutAssignedToUserInput[] | Prisma.IssueUncheckedCreateWithoutAssignedToUserInput[]
+  connectOrCreate?: Prisma.IssueCreateOrConnectWithoutAssignedToUserInput | Prisma.IssueCreateOrConnectWithoutAssignedToUserInput[]
+  createMany?: Prisma.IssueCreateManyAssignedToUserInputEnvelope
+  connect?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+}
+
+export type IssueUncheckedCreateNestedManyWithoutAssignedToUserInput = {
+  create?: Prisma.XOR<Prisma.IssueCreateWithoutAssignedToUserInput, Prisma.IssueUncheckedCreateWithoutAssignedToUserInput> | Prisma.IssueCreateWithoutAssignedToUserInput[] | Prisma.IssueUncheckedCreateWithoutAssignedToUserInput[]
+  connectOrCreate?: Prisma.IssueCreateOrConnectWithoutAssignedToUserInput | Prisma.IssueCreateOrConnectWithoutAssignedToUserInput[]
+  createMany?: Prisma.IssueCreateManyAssignedToUserInputEnvelope
+  connect?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+}
+
+export type IssueUpdateManyWithoutAssignedToUserNestedInput = {
+  create?: Prisma.XOR<Prisma.IssueCreateWithoutAssignedToUserInput, Prisma.IssueUncheckedCreateWithoutAssignedToUserInput> | Prisma.IssueCreateWithoutAssignedToUserInput[] | Prisma.IssueUncheckedCreateWithoutAssignedToUserInput[]
+  connectOrCreate?: Prisma.IssueCreateOrConnectWithoutAssignedToUserInput | Prisma.IssueCreateOrConnectWithoutAssignedToUserInput[]
+  upsert?: Prisma.IssueUpsertWithWhereUniqueWithoutAssignedToUserInput | Prisma.IssueUpsertWithWhereUniqueWithoutAssignedToUserInput[]
+  createMany?: Prisma.IssueCreateManyAssignedToUserInputEnvelope
+  set?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  disconnect?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  delete?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  connect?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  update?: Prisma.IssueUpdateWithWhereUniqueWithoutAssignedToUserInput | Prisma.IssueUpdateWithWhereUniqueWithoutAssignedToUserInput[]
+  updateMany?: Prisma.IssueUpdateManyWithWhereWithoutAssignedToUserInput | Prisma.IssueUpdateManyWithWhereWithoutAssignedToUserInput[]
+  deleteMany?: Prisma.IssueScalarWhereInput | Prisma.IssueScalarWhereInput[]
+}
+
+export type IssueUncheckedUpdateManyWithoutAssignedToUserNestedInput = {
+  create?: Prisma.XOR<Prisma.IssueCreateWithoutAssignedToUserInput, Prisma.IssueUncheckedCreateWithoutAssignedToUserInput> | Prisma.IssueCreateWithoutAssignedToUserInput[] | Prisma.IssueUncheckedCreateWithoutAssignedToUserInput[]
+  connectOrCreate?: Prisma.IssueCreateOrConnectWithoutAssignedToUserInput | Prisma.IssueCreateOrConnectWithoutAssignedToUserInput[]
+  upsert?: Prisma.IssueUpsertWithWhereUniqueWithoutAssignedToUserInput | Prisma.IssueUpsertWithWhereUniqueWithoutAssignedToUserInput[]
+  createMany?: Prisma.IssueCreateManyAssignedToUserInputEnvelope
+  set?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  disconnect?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  delete?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  connect?: Prisma.IssueWhereUniqueInput | Prisma.IssueWhereUniqueInput[]
+  update?: Prisma.IssueUpdateWithWhereUniqueWithoutAssignedToUserInput | Prisma.IssueUpdateWithWhereUniqueWithoutAssignedToUserInput[]
+  updateMany?: Prisma.IssueUpdateManyWithWhereWithoutAssignedToUserInput | Prisma.IssueUpdateManyWithWhereWithoutAssignedToUserInput[]
+  deleteMany?: Prisma.IssueScalarWhereInput | Prisma.IssueScalarWhereInput[]
+}
+
+export type IssueCreateWithoutAssignedToUserInput = {
+  title: string
+  description: string
+  status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type IssueUncheckedCreateWithoutAssignedToUserInput = {
+  id?: number
+  title: string
+  description: string
+  status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type IssueCreateOrConnectWithoutAssignedToUserInput = {
+  where: Prisma.IssueWhereUniqueInput
+  create: Prisma.XOR<Prisma.IssueCreateWithoutAssignedToUserInput, Prisma.IssueUncheckedCreateWithoutAssignedToUserInput>
+}
+
+export type IssueCreateManyAssignedToUserInputEnvelope = {
+  data: Prisma.IssueCreateManyAssignedToUserInput | Prisma.IssueCreateManyAssignedToUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type IssueUpsertWithWhereUniqueWithoutAssignedToUserInput = {
+  where: Prisma.IssueWhereUniqueInput
+  update: Prisma.XOR<Prisma.IssueUpdateWithoutAssignedToUserInput, Prisma.IssueUncheckedUpdateWithoutAssignedToUserInput>
+  create: Prisma.XOR<Prisma.IssueCreateWithoutAssignedToUserInput, Prisma.IssueUncheckedCreateWithoutAssignedToUserInput>
+}
+
+export type IssueUpdateWithWhereUniqueWithoutAssignedToUserInput = {
+  where: Prisma.IssueWhereUniqueInput
+  data: Prisma.XOR<Prisma.IssueUpdateWithoutAssignedToUserInput, Prisma.IssueUncheckedUpdateWithoutAssignedToUserInput>
+}
+
+export type IssueUpdateManyWithWhereWithoutAssignedToUserInput = {
+  where: Prisma.IssueScalarWhereInput
+  data: Prisma.XOR<Prisma.IssueUpdateManyMutationInput, Prisma.IssueUncheckedUpdateManyWithoutAssignedToUserInput>
+}
+
+export type IssueScalarWhereInput = {
+  AND?: Prisma.IssueScalarWhereInput | Prisma.IssueScalarWhereInput[]
+  OR?: Prisma.IssueScalarWhereInput[]
+  NOT?: Prisma.IssueScalarWhereInput | Prisma.IssueScalarWhereInput[]
+  id?: Prisma.IntFilter<"Issue"> | number
+  title?: Prisma.StringFilter<"Issue"> | string
+  description?: Prisma.StringFilter<"Issue"> | string
+  status?: Prisma.EnumStatusFilter<"Issue"> | $Enums.Status
+  createdAt?: Prisma.DateTimeFilter<"Issue"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Issue"> | Date | string
+  assignedToUserId?: Prisma.StringNullableFilter<"Issue"> | string | null
+}
+
+export type IssueCreateManyAssignedToUserInput = {
+  id?: number
+  title: string
+  description: string
+  status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type IssueUpdateWithoutAssignedToUserInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type IssueUncheckedUpdateWithoutAssignedToUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type IssueUncheckedUpdateManyWithoutAssignedToUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type IssueSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -397,6 +568,8 @@ export type IssueSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  assignedToUserId?: boolean
+  assignedToUser?: boolean | Prisma.Issue$assignedToUserArgs<ExtArgs>
 }, ExtArgs["result"]["issue"]>
 
 export type IssueSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -406,6 +579,8 @@ export type IssueSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  assignedToUserId?: boolean
+  assignedToUser?: boolean | Prisma.Issue$assignedToUserArgs<ExtArgs>
 }, ExtArgs["result"]["issue"]>
 
 export type IssueSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -415,6 +590,8 @@ export type IssueSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  assignedToUserId?: boolean
+  assignedToUser?: boolean | Prisma.Issue$assignedToUserArgs<ExtArgs>
 }, ExtArgs["result"]["issue"]>
 
 export type IssueSelectScalar = {
@@ -424,13 +601,25 @@ export type IssueSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  assignedToUserId?: boolean
 }
 
-export type IssueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["issue"]>
+export type IssueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "status" | "createdAt" | "updatedAt" | "assignedToUserId", ExtArgs["result"]["issue"]>
+export type IssueInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assignedToUser?: boolean | Prisma.Issue$assignedToUserArgs<ExtArgs>
+}
+export type IssueIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assignedToUser?: boolean | Prisma.Issue$assignedToUserArgs<ExtArgs>
+}
+export type IssueIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  assignedToUser?: boolean | Prisma.Issue$assignedToUserArgs<ExtArgs>
+}
 
 export type $IssuePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Issue"
-  objects: {}
+  objects: {
+    assignedToUser: Prisma.$UserPayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     title: string
@@ -438,6 +627,7 @@ export type $IssuePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     status: $Enums.Status
     createdAt: Date
     updatedAt: Date
+    assignedToUserId: string | null
   }, ExtArgs["result"]["issue"]>
   composites: {}
 }
@@ -832,6 +1022,7 @@ readonly fields: IssueFieldRefs;
  */
 export interface Prisma__IssueClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  assignedToUser<T extends Prisma.Issue$assignedToUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Issue$assignedToUserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -867,6 +1058,7 @@ export interface IssueFieldRefs {
   readonly status: Prisma.FieldRef<"Issue", 'Status'>
   readonly createdAt: Prisma.FieldRef<"Issue", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Issue", 'DateTime'>
+  readonly assignedToUserId: Prisma.FieldRef<"Issue", 'String'>
 }
     
 
@@ -883,6 +1075,10 @@ export type IssueFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Issue
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
   /**
    * Filter, which Issue to fetch.
    */
@@ -902,6 +1098,10 @@ export type IssueFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
+  /**
    * Filter, which Issue to fetch.
    */
   where: Prisma.IssueWhereUniqueInput
@@ -919,6 +1119,10 @@ export type IssueFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Issue
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
   /**
    * Filter, which Issue to fetch.
    */
@@ -968,6 +1172,10 @@ export type IssueFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
+  /**
    * Filter, which Issue to fetch.
    */
   where?: Prisma.IssueWhereInput
@@ -1016,6 +1224,10 @@ export type IssueFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
+  /**
    * Filter, which Issues to fetch.
    */
   where?: Prisma.IssueWhereInput
@@ -1059,6 +1271,10 @@ export type IssueCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
+  /**
    * The data needed to create a Issue.
    */
   data: Prisma.XOR<Prisma.IssueCreateInput, Prisma.IssueUncheckedCreateInput>
@@ -1092,6 +1308,10 @@ export type IssueCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.IssueCreateManyInput | Prisma.IssueCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1106,6 +1326,10 @@ export type IssueUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Issue
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
   /**
    * The data needed to update a Issue.
    */
@@ -1158,6 +1382,10 @@ export type IssueUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Issues to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1172,6 +1400,10 @@ export type IssueUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Issue
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
   /**
    * The filter to search for the Issue to update in case it exists.
    */
@@ -1199,6 +1431,10 @@ export type IssueDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
+  /**
    * Filter which Issue to delete.
    */
   where: Prisma.IssueWhereUniqueInput
@@ -1219,6 +1455,25 @@ export type IssueDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Issue.assignedToUser
+ */
+export type Issue$assignedToUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * Issue without action
  */
 export type IssueDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1230,4 +1485,8 @@ export type IssueDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Issue
    */
   omit?: Prisma.IssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
 }
